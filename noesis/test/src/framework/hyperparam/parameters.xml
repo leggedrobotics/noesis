@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<custom type="" name="tuple">
+  <vString type="strings">
+    <element value="val0" range="val0 val1 val2 " />
+    <element value="val1" range="val0 val1 val2 " />
+  </vString>
+  <vDouble type="doubles">
+    <element value="2" range="1 100 " discrete="false" />
+    <element value="3" range="1 100 " discrete="false" />
+  </vDouble>
+  <vFloat type="floats">
+    <element value="2" range="1 100 " discrete="false" />
+    <element value="3" range="1 100 " discrete="false" />
+  </vFloat>
+  <sDouble value="3" type="double" range="0 100 " discrete="false" />
+  <vInt type="ints">
+    <element value="2" range="1 100 " discrete="false" />
+    <element value="3" range="1 100 " discrete="false" />
+  </vInt>
+  <vBool type="bools">
+    <element value="true" />
+    <element value="true" />
+  </vBool>
+  <sBool value="true" type="bool" />
+  <sFloat value="2" type="float" range="0 100 " discrete="false" />
+  <sInt value="1" type="int" range="0 100 " discrete="false" />
+  <sString value="val0" type="string" range="val0 val1 val2 " />
+</custom>
+

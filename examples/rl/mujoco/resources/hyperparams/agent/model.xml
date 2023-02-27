@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<HyperParameters>
+    <Examples>
+        <Agent>
+            <StateValue>
+                <architecture name="Model" type="MultiLayerPerceptron">
+                    <units type="ints">
+                        <element value="64" range="1 2147483647 " discrete="false" />
+                        <element value="64" range="1 2147483647 " discrete="false" />
+                    </units>
+                    <activations type="strings">
+                        <element value="tanh" range="identity relu leaky_relu elu selu softplus softsign sigmoid tanh " />
+                        <element value="tanh" range="identity relu leaky_relu elu selu softplus softsign sigmoid tanh " />
+                    </activations>
+                </architecture>
+            </StateValue>
+            <StochasticPolicy>
+                <architecture name="Model" type="MultiLayerPerceptron">
+                    <units type="ints">
+                        <element value="64" range="1 2147483647 " discrete="false" />
+                        <element value="64" range="1 2147483647 " discrete="false" />
+                    </units>
+                    <activations type="strings">
+                        <element value="tanh" range="identity relu leaky_relu elu selu softplus softsign sigmoid tanh " />
+                        <element value="tanh" range="identity relu leaky_relu elu selu softplus softsign sigmoid tanh " />
+                    </activations>
+                </architecture>
+                <initial_stddev value="1.0" type="float" range="0 1000 " discrete="false" />
+            </StochasticPolicy>
+        </Agent>
+    </Examples>
+</HyperParameters>

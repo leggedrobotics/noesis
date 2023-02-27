@@ -1,0 +1,65 @@
+#!/usr/bin/env python
+
+# Copyright 2020 The Noesis Authors. All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# ==============================================================================
+
+"""Helper script for checking devices usable by TensorFlow."""
+
+from __future__ import absolute_import
+from __future__ import print_function
+from __future__ import division
+
+import os
+import argparse
+from noesis.core import device
+
+# Reduce the verbosity of the console output
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1'
+
+
+# Argument parser
+def parse_args():
+    """ Parses CLI arguments applicable for this helper script
+    """
+    # Create parser instance
+    parser = argparse.ArgumentParser(description='Display TensorFlow device nodes available on the system.', )
+    # Define arguments
+    parser.add_argument("--cpu", help='Display CPU devices only.', action='store_true')
+    parser.add_argument("--gpu", help='Display GPU devices only.', action='store_true')
+    # Retrieve arguments
+    args = parser.parse_args()
+    return args
+
+
+# Main function
+def main(args):
+    """ Reports all device nodes available for use with TensorFlow
+    """
+    if args.cpu is True:
+        print("CPUs: ", device.available_cpus())
+    elif args.gpu is True:
+        print("GPUs: ", device.available_gpus())
+    else:
+        print("ALL: ", device.available_devices())
+
+
+# Main program entry-point
+if __name__ == '__main__':
+    # Retrieve arguments
+    ARGS = parse_args()
+    # Run tensorflow devices check
+    main(ARGS)
+
+# EOF

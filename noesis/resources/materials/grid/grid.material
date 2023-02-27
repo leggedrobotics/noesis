@@ -1,0 +1,19 @@
+material terrain/grid
+{
+    technique
+    {
+        pass
+        {
+            scene_blend alpha_blend
+            depth_write on
+            emissive 1 1 1 1
+            texture_unit
+            {
+                texture grid.png
+                scale 0.0025 0.0025
+                filtering anisotropic
+                max_anisotropy 8
+            }
+        }
+    }
+}

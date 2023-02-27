@@ -1,0 +1,5 @@
+[MASTER]
+
+optimize-ast=no
+max-line-length=140
+contextmanager-decorators=contextmanager-decorators=contextlib.contextmanager,tensorflow.python.util.tf_contextlib.contextmanager

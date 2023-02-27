@@ -1,0 +1,295 @@
+<?xml version="1.0" ?>
+<robot name="capler">
+
+  <!--
+    Visualization Materials
+   -->
+  <material name="black">
+    <color rgba="0.0 0.0 0.0 1.0"/>
+  </material>
+  <material name="dark_grey">
+    <color rgba="0.1 0.1 0.1 1.0"/>
+  </material>
+  <material name="grey">
+    <color rgba="0.2 0.2 0.2 1.0"/>
+  </material>
+  <material name="light_grey">
+    <color rgba="0.4 0.4 0.4 1.0"/>
+  </material>
+  <material name="white">
+    <color rgba="1.0 1.0 1.0 1.0"/>
+  </material>
+  <material name="red">
+    <color rgba="0.8 0.0 0.0 1.0"/>
+  </material>
+  <material name="green">
+    <color rgba="0.0 0.8 0.0 1.0"/>
+  </material>
+  <material name="blue">
+    <color rgba="0.0 0.0 0.8 1.0"/>
+  </material>
+
+  <!--
+    LINKS
+   -->
+  
+  <!-- World - defines a fixed base system -->
+  <link name="world"/>
+  
+  <!-- Rail link -->
+  <link name="RAIL">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.88"/>
+      <geometry>
+        <box size="0.03 0.015 1.75"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.88"/>
+      <geometry>
+        <box size="0.03 0.015 1.75"/>
+      </geometry>
+      <material name="black"/>
+    </collision>
+  </link>
+  <!-- Rail joint -->
+  <joint name="RXYZ" type="fixed">
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+    <parent link="world"/>
+    <child link="RAIL"/>
+  </joint>
+  
+  <!-- Base link -->
+  <link name="BASE">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.09 0.015 0.17"/>
+      </geometry>
+      <material name="dark_grey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.09 0.015 0.17"/>
+      </geometry>
+      <material name="dark_grey"/>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+      <mass value="2.8"/>
+      <inertia ixx="1e-05" ixy="0.0" ixz="0.0" iyy="1e-05" iyz="0.0" izz="1e-05"/>
+    </inertial>
+  </link>
+  <!-- Base joint -->
+  <joint name="BH" type="prismatic">
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.02 0.0"/>
+    <axis xyz="0 0 1"/>
+    <parent link="RAIL"/>
+    <child link="BASE"/>
+    <limit lower="0.0" upper="3.0"/>
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+  
+  <!-- Hip link -->
+  <link name="HIP">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/hip.dae" scale="0.1 0.1 0.1"/>
+      </geometry>
+      <material name="light_grey"/>
+    </visual>
+    <collision>
+      <origin rpy="1.570796327 0 0" xyz="0.09 0.015 0"/>
+      <geometry>
+        <cylinder length="0.035" radius="0.055"/>
+      </geometry>
+      <material name="light_grey"/>
+    </collision>
+    <collision>
+      <origin rpy="1.570796327 0 0" xyz="0.09 -0.015 0"/>
+      <geometry>
+        <cylinder length="0.025" radius="0.015"/>
+      </geometry>
+      <material name="light_grey"/>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.0136 0.0 0.0"/>
+      <mass value="1.539"/>
+      <inertia ixx="1e-05" ixy="0.0" ixz="0.0" iyy="1e-05" iyz="0.0" izz="1e-05"/>
+    </inertial>
+  </link>
+  <!-- Hip joint -->
+  <joint name="HAA" type="fixed">
+    <origin rpy="0.0 0.0 0.0" xyz="0.01755 -0.005 0.0"/>
+    <axis xyz="1 0 0"/>
+    <parent link="BASE"/>
+    <child link="HIP"/>
+    <limit effort="50.0" lower="-6.28" upper="6.28" velocity="30.0"/>
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+  
+  <!-- Thigh link -->
+  <link name="THIGH">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="../meshes/thigh.dae" scale="0.1 0.1 0.1"/>
+      </geometry>
+      <material name="light_grey"/>
+    </visual>
+    <collision>
+      <origin rpy="1.570796327 0 0" xyz="0 -0.026 0"/>
+      <geometry>
+        <cylinder length="0.025" radius="0.07"/>
+      </geometry>
+      <material name="light_grey"/>
+    </collision>
+    <collision>
+      <origin rpy="1.570796327 0 0" xyz="0.0 -0.063 0"/>
+      <geometry>
+        <cylinder length="0.049" radius="0.065"/>
+      </geometry>
+      <material name="light_grey"/>
+    </collision>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 -0.063 -0.11"/>
+      <geometry>
+        <box size="0.12 0.049 0.22"/>
+      </geometry>
+      <material name="light_grey"/>
+    </collision>
+    <collision>
+      <origin rpy="1.570796327 0 0" xyz="0.0 -0.063 -0.22"/>
+      <geometry>
+        <cylinder length="0.049" radius="0.06"/>
+      </geometry>
+      <material name="light_grey"/>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.0001 0.0547 -0.2061"/>
+      <mass value="2.261"/>
+      <inertia ixx="0.032833" ixy="0.0" ixz="0.0" iyy="0.032833" iyz="0.0" izz="0.032833"/>
+    </inertial>
+  </link>
+  <!-- Thigh joint -->
+  <joint name="HFE" type="revolute">
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+    <axis xyz="0 1 0"/>
+    <parent link="HIP"/>
+    <child link="THIGH"/>
+    <limit effort="100" lower="-1.57" upper="1.57" velocity="30.0"/>
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+  
+  <!-- Shank link -->
+  <link name="SHANK">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 -0.022 0"/>
+      <geometry>
+        <box size="0.04 0.03 0.04"/>
+      </geometry>
+      <material name="light_grey"/>
+    </visual>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 -0.0228 -0.125"/>
+      <geometry>
+        <cylinder length="0.21" radius="0.014"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 -0.022 0"/>
+      <geometry>
+        <box size="0.04 0.03 0.04"/>
+      </geometry>
+      <material name="light_grey"/>
+    </collision>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 -0.0228 -0.125"/>
+      <geometry>
+        <cylinder length="0.21" radius="0.014"/>
+      </geometry>
+      <material name="black"/>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.007297066425 -0.007543552828 -0.141776136872"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.0135" ixy="0.0" ixz="0.0" iyy="0.0135" iyz="0.0" izz="0.0135"/>
+    </inertial>
+  </link>
+  <!-- Thigh lower/Shank upper joint -->
+  <joint name="KFE" type="revolute">
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -0.24"/>
+    <axis xyz="0 1 0"/>
+    <parent link="THIGH"/>
+    <child link="SHANK"/>
+    <limit effort="100" lower="-0.7854" upper="2.7307" velocity="30.0"/>
+    <dynamics damping="0.0" friction="0.0"/>
+  </joint>
+  
+  <!-- Foot-mount link -->
+  <link name="FOOT_MOUNT"/>
+  <!-- Foot-mount joint to shank -->
+  <joint name="SHANK_TO_MOUNT" type="fixed">
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 -0.0228 -0.21"/>
+    <parent link="SHANK"/>
+    <child link="FOOT_MOUNT"/>
+  </joint>
+  
+  <!-- Foot-sensor link -->
+  <link name="FOOT_SENSOR">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.03" radius="0.03"/>
+      </geometry>
+      <material name="dark_grey"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.03" radius="0.03"/>
+      </geometry>
+      <material name="dark_grey"/>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.15"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.005" iyz="0.0" izz="0.0001"/>
+    </inertial>
+  </link>
+  <!-- Foot-sensor joint to foot-mount -->
+  <joint name="MOUNT_TO_SENSOR" type="fixed">
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+    <parent link="FOOT_MOUNT"/>
+    <child link="FOOT_SENSOR"/>
+  </joint>
+  
+  <!-- Foot-contact link -->
+  <link name="FOOT_CONTACT">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.03"/>
+      </geometry>
+      <material name="green"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <sphere radius="0.03"/>
+      </geometry>
+      <material name="green"/>
+    </collision>
+  </link>
+  <!-- Foot-contact joint to foot-sensor -->
+  <joint name="SENSOR_TO_FOOT" type="fixed">
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 -0.015"/>
+    <parent link="FOOT_SENSOR"/>
+    <child link="FOOT_CONTACT"/>
+  </joint>
+  
+</robot>

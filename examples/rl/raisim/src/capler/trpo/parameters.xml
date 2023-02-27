@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<HyperParameters>
+    <Example>
+        <Agent>
+            <PolicyEvaluator>
+                <damping value="0.1" type="float" range="0 1 " discrete="false" />
+                <ve_coefficient value="1.0" type="float" range="0 3.40282e+38 " discrete="false" />
+                <l2_regularization value="0.0" type="float" range="0 3.40282e+38 " discrete="false" />
+                <learning_rate value="0.001" type="float" range="0 3.40282e+38 " discrete="false" />
+                <max_grad_norm value="100.0" type="float" range="0 3.40282e+38 " discrete="false" />
+            </PolicyEvaluator>
+            <PolicyOptimizer>
+                <kld_threshold value="0.01" type="float" range="0 3.40282e+38 " discrete="false" />
+                <entropy_weight value="0.0" type="float" range="0 3.40282e+38 " discrete="false" />
+                <cg_damping value="0.1" type="float" range="0 3.40282e+38 " discrete="false" />
+                <cg_tolerance value="1e-15" type="float" range="0 3.40282e+38 " discrete="false" />
+                <cg_max_iterations value="40" type="int" range="1 2147483647 " discrete="false" />
+                <line_search_contraction_factor value="0.5" type="float" range="0 1.0 " discrete="false" />
+                <line_search_max_iterations value="10" type="int" range="1 2147483647 " discrete="false" />
+            </PolicyOptimizer>
+            <AdvantageEstimator>
+                <discount_factor value="0.995" type="float" range="0 1 " discrete="false" />
+                <trace_decay value="0.99" type="float" range="0 1 " discrete="false" />
+                <normalization value="batch" type="string" range="none trajectory batch " />
+            </AdvantageEstimator>
+            <TrajectoryMemory>
+                <initial_capacity value="500" type="int" range="0 2147483647 " discrete="false" />
+                <adaptive_capacity value="false" type="bool" />
+            </TrajectoryMemory>
+            <samples_per_iteration value="16000" type="int" range="1 2147483647 " discrete="false" />
+            <number_of_epochs value="20" type="int" range="1 2147483647 " discrete="false" />
+        </Agent>
+        <Trainer>
+            <iterations_per_checkpoint value="100" type="int" range="0 2147483647 " discrete="false" />
+        </Trainer>
+    </Example>
+</HyperParameters>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<HyperParameters>
+    <Examples>
+        <Agent>
+            <PolicyEvaluator>
+                <optimizer name="optimizer" type="AdamOptimizer">
+                    <epsilon value="1e-5" type="float" range="0 1 " discrete="false" />
+                    <learning_rate value="0.0003" type="float" range="0 3.40282e+38 " discrete="false" />
+                </optimizer>
+                <parameter_decay name="lr_decay" type="polynomial_decay">
+                    <decay_steps value="500" type="int" range="1 max" discrete="false"/>
+                    <end_learning_rate value="0.0" type="float" range="0 max" discrete="false"/>
+                </parameter_decay>
+                <max_grad_norm value="0.5" type="float" range="0 3.40282e+38 " discrete="false" />
+                <clipping value="0.2" type="float" range="0 1 " discrete="false" />
+                <ve_coefficient value="0.5" type="float" range="0 3.40282e+38 " discrete="false" />
+                <l2_regularization value="0.0" type="float" range="0 3.40282e+38 " discrete="false" />
+                <discount_factor value="0.99" type="float" range="0 1 " discrete="false" />
+            </PolicyEvaluator>
+            <PolicyOptimizer>
+                <optimizer name="optimizer" type="AdamOptimizer">
+                    <epsilon value="1e-5" type="float" range="0 1 " discrete="false" />
+                    <learning_rate value="0.0003" type="float" range="0 3.40282e+38 " discrete="false" />
+                </optimizer>
+                <parameter_decay name="lr_decay" type="polynomial_decay">
+                    <decay_steps value="500" type="int" range="1 max" discrete="false"/>
+                    <end_learning_rate value="0.0" type="float" range="0 max" discrete="false"/>
+                </parameter_decay>
+                <max_grad_norm value="0.5" type="float" range="0 3.40282e+38 " discrete="false" />
+                <clipping value="0.2" type="float" range="0 1 " discrete="false" />
+                <use_clipping value="true" type="bool" />
+                <kld_penalty value="0.0" type="float" range="0 3.40282e+38 " discrete="false" />
+                <kld_target value="0.0" type="float" range="0 3.40282e+38 " discrete="false" />
+                <use_adaptive_kld value="false" type="bool" />
+                <entropy_coefficient value="0.0" type="float" range="0 3.40282e+38 " discrete="false" />
+                <l2_regularization value="0.0" type="float" range="0 3.40282e+38 " discrete="false" />
+            </PolicyOptimizer>
+            <TrajectoryMemory>
+                <initial_capacity value="10000" type="int" range="0 2147483647 " discrete="false" />
+                <adaptive_capacity value="false" type="bool" />
+            </TrajectoryMemory>
+            <AdvantageEstimator>
+                <discount_factor value="0.99" type="float" range="0 1 " discrete="false" />
+                <trace_decay value="0.95" type="float" range="0 1 " discrete="false" />
+                <normalization value="batch" type="string" range="none trajectory batch " />
+            </AdvantageEstimator>
+            <samples_per_iteration value="2048" type="int" range="1 2147483647 " discrete="false" />
+            <number_of_epochs value="10" type="int" range="1 2147483647 " discrete="false" />
+            <number_of_minibatches value="32" type="int" range="1 2147483647 " discrete="false" />
+            <shuffle_minibatches value="true" type="bool" />
+        </Agent>
+    </Examples>
+</HyperParameters>

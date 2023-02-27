@@ -1,0 +1,88 @@
+#=============================================================================
+# Copyright (C) 2020, Robotic Systems Lab, ETH Zurich
+# All rights reserved.
+# http://www.rsl.ethz.ch
+# https://bitbucket.org/leggedrobotics/noesis
+#
+# This software is distributed WITHOUT ANY WARRANTY; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the License for more information.
+#=============================================================================
+# Authors: Vassilios Tsounis, tsounisv@ethz.ch
+#=============================================================================
+#
+# Finds the Noesis C++ library for integration into CMake projects.
+#
+# This will define the following imported targets:
+#    noesis::noesis
+#
+# In addition, following variables will also be defined:
+#    noesis_FOUND
+#    noesis_VERSION
+#    noesis_INCLUDE_DIRS
+#    noesis_LIBRARIES
+#=============================================================================
+include(FindPackageHandleStandardArgs)
+
+# Unset found flag to ensure correct package configuration
+unset(noesis_FOUND)
+
+#==
+# Dependencies
+#==
+
+# OpenMP: The OpenMP API specification for parallel programming (https://www.openmp.org/)
+find_package(OpenMP REQUIRED)
+
+# Boost: Free, peer-reviewed and portable C++ source libraries.
+find_package(Boost REQUIRED COMPONENTS filesystem thread program_options)
+
+# TensorFlow: An Open Source Machine Learning Framework for Everyone (https://tensorflow.org)
+find_package(TensorFlow CONFIG REQUIRED)
+
+# MuJoCo:  Multi-Joint dynamics with Contact advanced physics simulation
+if (Noesis_USE_MUJOCO)
+  find_package(mujoco_cpp CONFIG REQUIRED)
+endif()
+
+# RaiSim: Fast, efficient and realistic multi-body physics
+if (Noesis_USE_RAISIM)
+  find_package(raisim CONFIG REQUIRED)
+endif()
+if (Noesis_USE_RAISIM_OGRE)
+  find_package(raisimOgre CONFIG REQUIRED)
+endif()
+
+#==
+# Package contents
+#==
+
+if(NOT TARGET noesis::noesis)
+  include(${CMAKE_CURRENT_LIST_DIR}/noesis-targets.cmake)
+endif()
+
+get_target_property(noesis_INCLUDE_DIRS noesis::noesis INTERFACE_INCLUDE_DIRECTORIES)
+get_target_property(noesis_LIBRARIES noesis::noesis INTERFACE_LINK_LIBRARIES)
+list(INSERT noesis_LIBRARIES 0 noesis::noesis)
+
+#==
+# Package configuration check
+#==
+
+find_package_handle_standard_args(noesis
+  REQUIRED_VARS
+    noesis_VERSION
+    noesis_INCLUDE_DIRS
+    noesis_LIBRARIES
+)
+
+if(noesis_FOUND)
+  message(STATUS "Noesis:")
+  message(STATUS "  Version: ${noesis_VERSION}")
+  message(STATUS "  Includes: ${noesis_INCLUDE_DIRS}")
+  message(STATUS "  Libraries: ${noesis_LIBRARIES}")
+endif()
+
+mark_as_advanced(noesis_FOUND noesis_VERSION noesis_INCLUDE_DIRS noesis_LIBRARIES)
+
+# EOF

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<HyperParameters>
+  <Examples>
+
+    <!-- Seeds -->
+    <graph_seed value="42" type="int" range="0 2147483647 " discrete="false" />
+    <Agent>
+      <policy_seed value="42" type="int" range="0 2147483647 " discrete="false" />
+    </Agent>
+    <Environment>
+      <dynamics_seed value="42" type="int" range="0 2147483647 " discrete="false" />
+    </Environment>
+
+    <!--Test Runner-->
+    <Tester>
+      <max_steps_per_episode value="1000" type="int"/>
+      <reset_on_termination value="true" type="bool"/>
+      <record_video value="true" type="bool"/>
+    </Tester>
+
+    <!-- Test Configurations -->
+    <agent_type value="ppo" type="string" range="ppo trpo "/>
+    <environment_type value="walker2d" type="string" range="hopper halfcheetah walker2d ant humanoid"/>
+    <testing_steps value="5000" type="int" range="0 2147483647 " discrete="false"/>
+
+  </Examples>
+</HyperParameters>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<HyperParameters>
+    <Examples>
+        <Environment>
+            <dynamics_timestep value="0.003" type="double" range="0 1.79769e+308 " discrete="false" />
+            <control_decimation value="5" type="int" range="1 2147483647 " discrete="false" />
+            <randomize_dynamics value="false" type="bool" />
+            <discount_factor value="0.99" type="float" range="0.0 1.0 " discrete="false"/>
+            <observations_clipping value="10.0" type="float" range="0 3.40282e+38 " discrete="false"/>
+            <rewards_clipping value="10.0" type="float" range="0 3.40282e+38 " discrete="false"/>
+            <normalize_observations value="true" type="bool" />
+            <normalize_rewards value="true" type="bool" />
+            <tasks>
+                <BenchmarkTask>
+                    <reward_terms>
+                        <reward_forward>
+                            <weight value="1.25" type="double" />
+                            <scaling value="1" type="double" />
+                            <enabled value="true" type="bool" />
+                        </reward_forward>
+                        <reward_healthy>
+                            <weight value="5" type="double" />
+                            <scaling value="1" type="double" />
+                            <enabled value="true" type="bool" />
+                        </reward_healthy>
+                        <reward_ctrl>
+                            <weight value="0.1" type="double" />
+                            <scaling value="1" type="double" />
+                            <enabled value="true" type="bool" />
+                        </reward_ctrl>
+                        <reward_contact>
+                            <weight value="5e-07" type="double" />
+                            <scaling value="1" type="double" />
+                            <enabled value="true" type="bool" />
+                        </reward_contact>
+                    </reward_terms>
+                    <termination_conditions>
+                        <base_height_termination>
+                            <terminal_reward value="0" type="double" />
+                            <enabled value="true" type="bool" />
+                        </base_height_termination>
+                    </termination_conditions>
+                </BenchmarkTask>
+            </tasks>
+        </Environment>
+    </Examples>
+</HyperParameters>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<HyperParameters>
+    <Examples>
+        <Agent>
+            <PolicyEvaluator>
+                <optimizer type="AdamOptimizer">
+                    <epsilon value="1e-08" type="float" range="0 1 " discrete="false" />
+                    <use_locking value="false" type="bool" />
+                    <beta2 value="0.999" type="float" range="0 3.40282e+38 " discrete="false" />
+                    <learning_rate value="0.001" type="float" range="0 3.40282e+38 " discrete="false" />
+                    <beta1 value="0.9" type="float" range="0 3.40282e+38 " discrete="false" />
+                </optimizer>
+                <parameter_decay name="lr_decay" type="exponential_decay">
+                    <staircase value="false" type="bool" />
+                    <decay_rate value="0.99" type="float" range="1.17549e-38 1 " discrete="false" />
+                    <decay_steps value="1000" type="int" range="1 2147483647 " discrete="false" />
+                </parameter_decay>
+                <parameter_decay name="damping_decay" type="exponential_decay">
+                    <staircase value="false" type="bool" />
+                    <decay_rate value="1.0" type="float" range="1.17549e-38 1 " discrete="false" />
+                    <decay_steps value="1000" type="int" range="1 2147483647 " discrete="false" />
+                </parameter_decay>
+                <discount_factor value="0.99" type="float" range="0 1 " discrete="false" />
+                <max_grad_norm value="1000.0" type="float" range="0 3.40282e+38 " discrete="false" />
+                <damping value="0.1" type="float" range="0 1 " discrete="false" />
+                <l2_regularization value="0.0" type="float" range="0 3.40282e+38 " discrete="false" />
+                <number_of_epochs value="40" type="int" range="1 2147483647 " discrete="false" />
+            </PolicyEvaluator>
+            <PolicyOptimizer>
+                <kld_threshold value="0.01" type="float" range="0 3.40282e+38 " discrete="false" />
+                <entropy_coefficient value="0.0" type="float" range="0 3.40282e+38 " discrete="false" />
+                <l2_regularization value="0.0" type="float" range="0 3.40282e+38 " discrete="false" />
+                <cg_damping value="0.1" type="float" range="0 3.40282e+38 " discrete="false" />
+                <cg_tolerance value="1e-15" type="float" range="0 3.40282e+38 " discrete="false" />
+                <cg_max_iterations value="100" type="int" range="1 2147483647 " discrete="false" />
+                <line_search_contraction_factor value="0.5" type="float" range="0 1 " discrete="false" />
+                <line_search_max_iterations value="20" type="int" range="1 2147483647 " discrete="false" />
+            </PolicyOptimizer>
+            <TrajectoryMemory>
+                <initial_capacity value="1000" type="int" range="0 2147483647 " discrete="false" />
+                <adaptive_capacity value="false" type="bool" />
+            </TrajectoryMemory>
+            <AdvantageEstimator>
+                <discount_factor value="0.99" type="float" range="0 1 " discrete="false" />
+                <trace_decay value="0.97" type="float" range="0 1 " discrete="false" />
+                <normalization value="batch" type="string" range="none trajectory batch " />
+            </AdvantageEstimator>
+            <samples_per_iteration value="50000" type="int" range="1 2147483647 " discrete="false" />
+        </Agent>
+    </Examples>
+</HyperParameters>

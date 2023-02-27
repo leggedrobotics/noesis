@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package format="2">
+  <!--Package Header-->
+  <name>noesis</name>
+  <version>0.2.0</version>
+  <description>A framework for the development of robotic agents using TensorFlow C/C++.</description>
+  <license>Apache 2.0</license>
+  <url type="website">https://github.com/leggedrobotics/noesis</url>
+  <maintainer email="tsounisv@ethz.ch">Vassilios Tsounis</maintainer>
+  <author email="tsounisv@ethz.ch">Vassilios Tsounis</author>
+  <!--Package Dependencies-->
+  <buildtool_depend>cmake</buildtool_depend>
+  <exec_depend>catkin</exec_depend>
+  <build_depend>tensorflow</build_depend>
+  <build_depend>sfml-dev</build_depend>
+  <build_depend>tinyxml</build_depend>
+  <exec_depend>mujoco</exec_depend>
+  <exec_depend>mujoco_cpp</exec_depend>
+  <exec_depend>raisim</exec_depend>
+  <exec_depend>raisim_ogre</exec_depend>
+  <!--Package Export-->
+  <export>
+    <build_type>cmake</build_type>
+  </export>
+</package>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<HyperParameters>
+    <Kinova3>
+        <Agent>
+            <PolicyEvaluator>
+                <clipping value="0.2" type="float" range="0 1 " discrete="false" />
+                <ve_coefficient value="1.0" type="float" range="0 3.40282e+38 " discrete="false" />
+                <l2_regularization value="0.0" type="float" range="0 3.40282e+38 " discrete="false" />
+                <learning_rate value="0.0001" type="float" range="0 3.40282e+38 " discrete="false" />
+                <max_grad_norm value="1.0" type="float" range="0 3.40282e+38 " discrete="false" />
+            </PolicyEvaluator>
+            <PolicyOptimizer>
+                <use_clipping value="true" type="bool" />
+                <use_adaptive_kld value="false" type="bool" />
+                <clipping value="0.2" type="float" range="0 1 " discrete="false" />
+                <kld_penalty value="0.0" type="float" range="0 3.40282e+38 " discrete="false" />
+                <kld_target value="0.0" type="float" range="0 3.40282e+38 " discrete="false" />
+                <entropy_weight value="0.005" type="float" range="0 3.40282e+38 " discrete="false" />
+                <learning_rate value="0.0001" type="float" range="0 3.40282e+38 " discrete="false" />
+                <max_grad_norm value="1.0" type="float" range="0 3.40282e+38 " discrete="false" />
+            </PolicyOptimizer>
+            <AdvantageEstimator>
+                <discount_factor value="0.995" type="float" range="0 1 " discrete="false" />
+                <trace_decay value="0.99" type="float" range="0 1 " discrete="false" />
+                <normalization value="batch" type="string" range="none trajectory batch " />
+            </AdvantageEstimator>
+            <TrajectoryMemory>
+                <initial_capacity value="500" type="int" range="0 2147483647 " discrete="false" />
+                <adaptive_capacity value="false" type="bool" />
+            </TrajectoryMemory>
+            <samples_per_iteration value="38400" type="int" range="1 2147483647 " discrete="false" />
+            <number_of_epochs value="5" type="int" range="1 2147483647 " discrete="false" />
+            <number_of_minibatches value="6" type="int" range="1 2147483647 " discrete="false" />
+            <shuffle_minibatches value="true" type="bool" />
+        </Agent>
+        <Trainer>
+            <iterations_per_checkpoint value="100" type="int" range="0 2147483647 " discrete="false" />
+        </Trainer>
+    </Kinova3>
+</HyperParameters>

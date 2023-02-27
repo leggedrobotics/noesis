@@ -1,0 +1,10 @@
+**/*.egg-info/
+**/__pycache__/
+**/.pytest_cache/
+**/*.pyc
+**/cmake-build*/
+**/.idea/
+# Documentation
+docs/build
+docs/source/doxyoutput
+docs/source/api

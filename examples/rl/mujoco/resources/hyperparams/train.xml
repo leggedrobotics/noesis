@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<HyperParameters>
+  <Examples>
+
+    <!--Devices-->
+    <Agent>
+      <StateValue>
+        <device value="GPU" type="string"/>
+      </StateValue>
+      <StochasticPolicy>
+        <device value="GPU" type="string"/>
+      </StochasticPolicy>
+    </Agent>
+
+    <!-- Seeds -->
+    <graph_seed value="0" type="int"/>
+    <Agent>
+      <seed value="0" type="int"/>
+    </Agent>
+    <Environment>
+      <dynamics_seed value="0" type="int"/>
+    </Environment>
+
+    <!-- Runner -->
+    <Trainer>
+      <saving_interval value="20" type="int"/>
+      <steps_per_video_recording value="1000" type="int"/>
+    </Trainer>
+
+    <!-- Training Configurations -->
+    <agent_type value="ppo" type="string" range="ppo trpo "/>
+    <environment_type value="walker2d" type="string" range="hopper halfcheetah walker2d ant humanoid"/>
+    <max_steps_per_episode value="1000" type="int"/>
+    <training_samples value="10000000" type="int"/>
+
+  </Examples>
+</HyperParameters>
