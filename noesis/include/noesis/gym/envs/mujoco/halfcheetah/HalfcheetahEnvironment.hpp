@@ -6,7 +6,7 @@
  * @author    Mayank Mittal
  * @email     mittalma@ethz.ch
  *
- * Copyright (C) 2020 Robotic Systems Lab, ETH Zurich.
+ * Copyright (C) 2023 Robotic Systems Lab, ETH Zurich.
  * All rights reserved.
  * http://www.rsl.ethz.ch/
  */

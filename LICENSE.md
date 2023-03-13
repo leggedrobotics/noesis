@@ -5,7 +5,7 @@ STB is provided under public domain [license](https://github.com/nothings/stb).
 
 ## Noesis
 ```
-Copyright 2020 The Noesis Authors. All rights reserved.
+Copyright 2023 The Noesis Authors. All rights reserved.
 
                                  Apache License
                            Version 2.0, January 2004
@@ -195,7 +195,7 @@ Copyright 2020 The Noesis Authors. All rights reserved.
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2020 The Noesis Authors.
+   Copyright 2023 The Noesis Authors.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.

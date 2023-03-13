@@ -1,34 +1,32 @@
-Noesis
-----
+# Noesis C++
 
-### Package Modules
+**DISCLAIMER**: Doxygen documentation is currently under construction.
 
-* [__Framework__](include/noesis/framework): lies at the center of the Noesis framework and comprises of the following:      
-    * __core__: defines the basic data structures, such as the tensor `noesis::Tensor` and several functions that can be used to 
-    manipulate these data structures
-    * __graph__: implements the interface for generating, loading and running TensorFlow-based computation graphs and sub-graphs
-    * __hyperparam__: globally manages the parameters defined by other modules
-    * __log__: includes tools for logging using [TensorBoard](https://www.tensorflow.org/guide/summaries_and_tensorboard) and console 
-    output
-    * __math__: provides several mathematics operations, including kernels, random generators, and common probability distributions
-    * __system__: deals with filesystem operations and system signal handling
-    * __utils__: includes utilities for parsing and loading datasets
-* [__Estimator__](include/noesis/estimator): defines abstract class and its implementation for supervised learning
-* [__Agent__](include/noesis/agent): defines the abstract class and its implementation for creating a reinforcement learning agent
-* [__Environment__](include/noesis/environment): defines the abstract classes required for creating an environment in Noesis
-* [__Task__](include/noesis/task): complements the __environment__ module by providing an easy-to-use interface to handle reward terms and 
-termination criteria for the environment 
-* [__Algorithm__](include/noesis/algorithm): implements the learning algorithms, including policy evaluation, policy gradient estimation, 
-and regression
-* [__Function__](include/noesis/function): complements the `graph` submodule in __framework__ to create computation graphs for a particular
-purpose, such as policy or Q-value estimation networks 
-* [__Memory__](include/noesis/memory): provides task-dependent buffer implementations to store Tensors
-* [__Runner__](include/noesis/runner): acts as a middleware between the agent and the environment instances to train or evaluate an RL 
-algorithm
+### Library Components
 
-### API Concepts
+* [__framework__](include/noesis/framework):      
+    * __core__: basic data structures, such as the tensor `noesis::Tensor`, `noesis::TensorTuple` and `noesis::Graph`
+    * __hyperparam__: interface to manage hyper-parameters
+    * __log__: tools for logging using [TensorBoard](https://www.tensorflow.org/guide/summaries_and_tensorboard) and console output
+    * __math__: mathematics operations, statistics helpers for tensors and pseudo-random number generators
+    * __system__: interfaces for filesystem operations and system signal handling
+    * __utils__: utilities for parsing and loading datasets
+* [__MDP__](include/noesis/mdp): abstract interface for generalized MDP problems
+* [__gym__](include/noesis/gym): 
+    * __core__: environment base class and relevant decorators
+    * __envs__: environment implementations and physics engines interfaces
+    * __train__: Interface definitions for common objects used in training
+* [__rl__](include/noesis/rl):
+    * __agent__: DRL agent classes
+    * __algorithm__: DRL algorithms
+    * __function__: interfaces to parameterized functions
+    * __memory__: classes for data-set collection
+    * __sample__: sampling algorithms
+    * __train__: high-level classes used in training programs
 
-#### noesis Namespace
+### API
+
+#### Namespaces
 
 All the Noesis classes and functions are placed in the `noesis` namespace. In order to access this functionality, use the specifier `noesis::`
 or the directive `using namespace noesis`.
@@ -52,7 +50,7 @@ timesteps (T). Then, the shape of the batched tensor may look like: [H, W, 3, T,
 To account for cases where one might not be interested in sequential data (such as in supervised learning), it is possible to create a _normal_ 
 tensor, which would look like __[datum shape]__, by setting the tensor as not-batched at the time of creation.
 
-```objectivec
+```c++
 #include <noesis/framework/core/Tensor.hpp>
 ...
 // creating a batched tensor named "batched_tensor" with data size = [4, 4], timesteps = 3, batches = 2 

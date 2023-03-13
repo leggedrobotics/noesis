@@ -1,36 +1,28 @@
 ![logo](utils/readthedocs/images/noesis-logo.png)
 
 -----------------
-
-| **`Documentation`** |
-|-----------------|
-| [![Documentation](https://img.shields.io/badge/api-reference-blue.svg)](http://docs.leggedrobotics.com/noesis/) |
-| [![Build Status](https://ci.leggedrobotics.com/buildStatus/icon?job=bitbucket_leggedrobotics/noesis/master)](https://ci.leggedrobotics.com/job/bitbucket_leggedrobotics/job/noesis/job/master/) |
-
 ## Overview
 
-Software for robotic artificial intelligence. Noesis provides a suite of C++ and python libraries,
- mostly targeting applications of Reinforcement Learning (RL) in robotics.
+Noesis is a software toolbox for applying deep reinforcement learning to robotics problems. 
 
-The software currently provides support (i.e. developed and tested) for Ubuntu 18.04 LTS.
+This **pre-release** version currently is tested under Ubuntu 20.04 LTS, and supports `C++14` and Python `3.7`.
 
-The core of the software suite consists of two components:  
-
-1. **`noesis`:** A CMake package providing the C++ library for the following:   
-    * `framework`: Runtime implementations of the main infrastructure   
-    * `gym`: Wrappers for physics engines, and implementations of RL environments   
-    * `rl`: Runtime implementations of all RL algorithms and relevant components    
-2. **`noesis_py`:** A `pip` package providing the Python back-end for building and generating computation-graphs using TensorFlow.
-
-Noesis currently uses `C++14` and Python `3.6.9` by default.
+The toolbox consists of the following main components:
+1. **`noesis`:** A CMake package providing the following C++ libraries:   
+    * `framework`: Computational and operational core libraries for graphs, tensors, logging, system access etc.    
+    * `mdp`: A generalized interface for defining Markov Decision Processes (MDP) (i.e. environments).    
+    * `gym`: Interfaces to physics engines, and implementations of various environments    
+    * `rl`: Interfaces to DRL algorithms and relevant components.    
+2. **`noesis_py`:** A `pip` package providing the Python back-end for building computation-graphs using TensorFlow.    
+3. **`examples`:** Example programs for exploring the functionality and components of the library.
 
 Lastly, all C++ components are built using CMake, but also support [`catkin`](https://catkin-tools.readthedocs.io/en/latest/). 
 The latter is typically the tool of choice in the robotics community due to the ubiquity of [ROS](http://www.ros.org/). For 
-python, we use `virtualenv` and `virtualenvwrapper` for encapsulating `pip` package management on a per-user basis.
+python, we use `virtualenv` and `virtualenvwrapper` for package management.
 
 **Maintainer:** Vassilios Tsounis  
 **Affiliation:** Robotic Systems Lab, ETH Zurich  
-**Contact:** tsounisv@ethz.ch
+**Contact:** vastsoun@gmail.com
 
 ## Install
 
@@ -40,9 +32,9 @@ Please see [these](./utils/install/README.md) instructions on how to install Noe
 
 ### CMake
 
-Building can be performed anywhere in the users' home directory using CMake. We provide an example in 
-the form of a CMake project template in the `utils/workspace` directory. We recommend to use this 
-for getting started. See this [directory](./utils/workspace) for details.
+Building `noesis` can be performed anywhere in the user's home directory using CMake. We provide an example in 
+the form of a CMake project template in the `utils/workspace` directory. We recommend using this 
+for getting started on own projects. See [directory](./utils/workspace) for details.
 
 ### Catkin
 
@@ -56,8 +48,7 @@ catkin config --cmake-args -DCMAKE_BUILD_TYPE=Release
 catkin build noesis_examples
 ```
 
-Now we can test the build by executing any of the examples. Lets try the `framework_hello` 
-example:
+Now we can test the build by executing any of the examples. Let's try the `framework_hello` example:
 ```commandline
 user@ubuntu:~$ ./build/noesis/noesis_examples/framework_hello
 ```
@@ -69,14 +60,14 @@ Noesis has `apt`, `pip` and source dependencies.
 ### APT
 All `apt` dependencies are installed by the `install.sh` script (see installation instructions below):  
 
-* **[GCC 7.5](https://launchpad.net/~ubuntu-toolchain):** GNU C/C++ Compiler (GCC) v7 provided by the advanced Ubuntu toolchain repository.  
-* **[OpenMP 4.5](https://www.openmp.org/uncategorized/openmp-45-specs-released/):** OpenMP 4.5 provided by GCC 7.  
+* **[Python 3.7](https://www.python.org/downloads/release/python-3716/):** Current default version of Python 3.7 provided by the [dead-snakes](https://launchpad.net/~deadsnakes) repos.
+* **[GCC 9.4](https://launchpad.net/~ubuntu-toolchain):** GNU C/C++ Compiler (GCC) v9 provided by the advanced Ubuntu toolchain repository.  
+* **[CMake](https://cmake.org):** CMake is an open-source, cross-platform family of tools designed to build, test and package software.
+* **[OpenMP 4.5](https://www.openmp.org/uncategorized/openmp-45-specs-released/):** OpenMP 4.5 provided by GCC 9.  
 * **[Boost](https://www.boost.org/):** Free peer-reviewed portable C++ source libraries.  
-* **[CMake](https://cmake.org):** CMake is an open-source, cross-platform family of tools designed to build, test and package software.  
-* **[Python 3.6](https://www.python.org/downloads/release/python-352/):** Current default version of Python 3.5 provided in Ubuntu 16.04 LTS.  
+* **[TinyXML](https://sourceforge.net/projects/tinyxml/):** TinyXML is a simple, small, minimal, C++ XML parser that can be easily integrating into other programs.
 * **[SDL2](https://www.libsdl.org/download-2.0.php):** SDL is a cross-platform development library providing abstractions based on OpenGL.  
 * **[SFML](https://www.sfml-dev.org/):** Simple and Fast Multimedia Library used for drawing 2D graphics.  
-* **[TinyXML](https://sourceforge.net/projects/tinyxml/):** TinyXML is a simple, small, minimal, C++ XML parser that can be easily integrating into other programs.  
 * **[STB](https://github.com/nothings/stb):** STB is a set of single-file public domain libraries for C/C++. Only the parts for image processing are used.  
   
 **Note**: STB is already provided in-source in `noesis/include/stb` and no action needs to be taken for it's installation.
@@ -95,10 +86,30 @@ Noesis has a single source dependency on TensorFlow-Cpp, a CMake-based re-packag
 
 ## Bugs & Feature Requests
 
-Please report bugs and request features using the [Issue Tracker](https://bitbucket.org/leggedrobotics/noesis/issues?status=new&status=open).
+Please report bugs and request features using the [Issue Tracker](https://github.com/leggedrobotics/noesis/issues).
 
 ## License
 
 [Apache License 2.0](LICENSE.md)
+
+## Citing
+
+If you use Noesis, please cite as:
+```
+@phdthesis{tsounis2023thesis,
+year = {2023},
+type = {Doctoral Thesis},
+institution = {ETH Zurich},
+publisher = {ETH Zurich},
+school = {ETH Zurich},
+author = {Vassilios Tsounis},
+title = {Applications of Reinforcement Learning to Motion Planning & Control of Quadrupedal Robots},
+copyright = {In Copyright - Non-Commercial Use Permitted}
+}
+```
+
+## Acknowledgements
+
+See [AUTHORS.md](AUTHORS.md) for the complete list of authors and contributors and [ACKNOWLEDGEMENTS.md](ACKNOWLEDGEMENTS.md) for affiliations and funding accreditation.
 
 ----

@@ -1,4 +1,4 @@
-# Copyright 2020 The Noesis Authors. All Rights Reserved.
+# Copyright 2023 The Noesis Authors. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -51,7 +51,7 @@ SCRIPTS = [
 
 # Installation operation
 setup(name='noesis-py',
-      version='0.1.0',
+      version='0.2.0',
       description='Robotic AI using TensorFlow',
       url='https://github.com/leggedrobotics/noesis',
       author='Robotic Systems Lab, ETH Zurich',

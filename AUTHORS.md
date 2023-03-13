@@ -5,15 +5,14 @@
 Robotic Systems Lab, ETH Zurich     
 
 **Authors:**  
-Vassilios Tsounis, tsounisv@ethz.ch   
+Vassilios Tsounis, tsounisv@ethz.ch, vastsoun@gmail.com
+Joonho Lee, joonho.lee@mavt.ethz.ch
 
 **Contributors:**  
-David Hoeller, dhoeller@ethz.ch   
-Joonho Lee, joonho.lee@mavt.ethz.ch   
-Mayank Mittal, mittalma@ethz.ch   
-HaoChih Lin, hlin@student.ethz.ch 
 Jemin Hwangbo, jhwangbo@ethz.ch   
-Murkus Staeuble, markus.staeuble@mavt.ethz.ch 
-
+David Hoeller, dhoeller@ethz.ch    
+Mayank Mittal, mittalma@ethz.ch   
+HaoChih Lin, hlin@student.ethz.ch
+Murkus Staeuble, markus.staeuble@mavt.ethz.ch
 
 ----
